@@ -22,13 +22,13 @@ public class GatewayConfig {
                         .filters(f -> f
                                 .requestRateLimiter(config -> config.setKeyResolver(redisKeyResolver()))
                                 .addResponseHeader(HttpHeaders.CACHE_CONTROL, "max-age=3600"))
-                        .uri("http://service1.example.com"))
+                        .uri("http://yahoo.com"))
                 .route("service2_route", r -> r
                         .path("/service2/**")
                         .filters(f -> f
                                 .requestRateLimiter(config -> config.setKeyResolver(redisKeyResolver()))
-                                .addResponseHeader(HttpHeaders.CACHE_CONTROL, "max-age=3600"))
-                        .uri("http://service2.example.com"))
+                                .addResponseHeader(HttpHeaders.CACHE_CONTROL, "max-age=240"))
+                        .uri("http://yahoo.example.com"))
                 // Add more routes for other microservices
                 .build();
     }
